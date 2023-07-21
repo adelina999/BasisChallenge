@@ -17,7 +17,7 @@ public class CareersPage extends BasePage{
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://basis.com/company/careers";
         Assert.assertEquals(currentUrl, expectedUrl, "URLs do not match.");
-        return new CareersPage(driver);
+        return this;
     }
 
     public CentroPage clickOnViewAllPositions(){

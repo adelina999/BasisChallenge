@@ -20,14 +20,14 @@ public class ApplyJobPage extends BasePage{
        }
 
         Assert.assertEquals(currentUrl,urlToApply, "Job URL  doesn't match.");
-        return new ApplyJobPage(driver);
+        return this;
     }
 
     public ApplyJobPage clickApplytoThisJob(){
         WebElement applyBttn= driver.findElement(By.xpath("//div[@class='postings-btn-wrapper']//a[@class='postings-btn template-btn-submit black'][normalize-space()='Apply for this job']"));
         applyBttn.click();
         //Assert.assertEquals(jobTitle, jobName, "Job title doesn't match.");
-        return new ApplyJobPage(driver);
+        return this;
     }
 
 }
