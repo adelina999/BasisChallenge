@@ -65,7 +65,7 @@ public class ApplicationPage extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("attaching resume");
+      //  System.out.println("attaching resume");
 
 
         return this;

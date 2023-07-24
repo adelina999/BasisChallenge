@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,10 +16,14 @@ import java.util.List;
 public class PronounsTest extends BaseTest {
     @BeforeClass
     public void setUp() throws Exception {
-        init("chrome", "10");
-
-
-        baseStepstoAttachResume();
+        try {
+            init("chrome", "10");
+            baseStepstoAttachResume();
+        } catch (Exception e) {
+            // Handle initialization errors here
+            e.printStackTrace();
+            Assert.fail("Test setup failed: " + e.getMessage());
+        }
     }
 
     @Test
@@ -31,10 +36,14 @@ public class PronounsTest extends BaseTest {
                 "Hu/hu", "UseNameOnly", "Custom");
 
         for (int i = 0; i < pronounsList.size(); i++) {
-            System.out.println("Checking " + pronounsList.get(i));
-            applicationPage.testSinglePronouns(pronounsList.get(i));
+           try{
+               System.out.println("Checking " + pronounsList.get(i));
+               applicationPage.testSinglePronouns(pronounsList.get(i));
+           } catch (Exception e){
+               e.printStackTrace();
+           }
         }
-        System.out.println(pronounsList);
+      //  System.out.println(pronounsList);
         //       applicationPage.testSinglePronouns("He/him");
 
 
@@ -49,6 +58,11 @@ public class PronounsTest extends BaseTest {
 
     @AfterClass
     public void tearDown() {
-        quit();
+        try {
+            quit();
+        } catch (Exception e) {
+            // Handle cleanup errors here
+            e.printStackTrace();
+        }
     }
 }

@@ -18,8 +18,7 @@ driver.get("https://jobs.lever.co/centro?location=United%20States");
         //verifying new tab is opened , choosing location=USA and clicking the first job posting
         CentroPage centroPage= new CentroPage(driver);
 
-        centroPage.newTabVerification()
-                .chooseJobLocation();
+        centroPage.newTabVerification();
         String urlToApply= centroPage.getjobId();
         centroPage.chooseJobToApply();
 
@@ -39,8 +38,7 @@ driver.get("https://jobs.lever.co/centro?location=United%20States");
         //verifying new tab is opened , choosing location=USA and clicking the first job posting
         CentroPage centroPage= new CentroPage(driver);
 
-        centroPage.newTabVerification()
-                .chooseJobLocation();
+        centroPage.newTabVerification();
         String urlToApply= centroPage.getjobId();
         centroPage.chooseJobToApply();
 
@@ -61,8 +59,8 @@ driver.get("https://jobs.lever.co/centro?location=United%20States");
         //verifying new tab is opened , choosing location=USA and clicking the first job posting
         CentroPage centroPage= new CentroPage(driver);
 
-        centroPage.newTabVerification()
-                .chooseJobLocation();
+        centroPage.newTabVerification();
+
         String urlToApply= centroPage.getjobId();
         centroPage.chooseJobToApply();
 
@@ -82,8 +80,7 @@ driver.get("https://jobs.lever.co/centro?location=United%20States");
         //verifying new tab is opened , choosing location=USA and clicking the first job posting
         CentroPage centroPage= new CentroPage(driver);
 
-        centroPage.newTabVerification()
-                .chooseJobLocation();
+        centroPage.newTabVerification();
         String urlToApply= centroPage.getjobId();
         centroPage.chooseJobToApply();
 

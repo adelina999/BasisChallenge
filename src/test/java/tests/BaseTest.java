@@ -28,8 +28,7 @@ public class BaseTest {
         //verifying new tab is opened , choosing location=USA and clicking the first job posting
         CentroPage centroPage= new CentroPage(driver);
 
-        centroPage.newTabVerification()
-                .chooseJobLocation();
+        centroPage.newTabVerification();
         String urlToApply= centroPage.getjobId();
         centroPage.chooseJobToApply();
 
