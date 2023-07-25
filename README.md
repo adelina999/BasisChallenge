@@ -23,6 +23,8 @@ Alternatively, you can also run the tests directly from your IDE by executing th
 
 ## **Test Files**
 
+## **Make sure to update the path to the files you want to attach based on the location on your local machine in Application page- attachResume method**
+
 **JobApplicationTests**
 This test file covers end-to-end scenarios for the job application process on the Basis Technologies website. It includes steps from opening the browser to attaching a successful PDF resume format.
 
