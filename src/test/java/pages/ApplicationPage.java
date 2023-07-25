@@ -48,13 +48,13 @@ public class ApplicationPage extends BasePage {
         scenario = scenario.toUpperCase();
         String localpdfFile = null;
         //String pdfFilePath = "C:/Users/adelk/OneDrive/Desktop/resume/Adele Nosonovich_Test.pdf";
-        if (format == "PDF" && scenario == "POSITIVE") {
+        if (format.equals("PDF") && scenario.equals( "POSITIVE")) {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Test_resume.pdf";
-        } else if (format == "WORD" && scenario == "POSITIVE") {
+        } else if (format.equals("WORD")  && scenario.equals("POSITIVE") ) {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Test_resume.docx";
-        } else if (format == "PDF" && scenario == "NEGATIVE") {
+        } else if (format.equals("PDF")  && scenario.equals("NEGATIVE")  ) {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/basis_automation_assignment.pdf";
-        } else if (format == "WORD" && scenario == "NEGATIVE") {
+        } else if (format.equals("WORD")   && scenario.equals("NEGATIVE")  ) {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/basis_automation_assignment.pdf";
         }
 
