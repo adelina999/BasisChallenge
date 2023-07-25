@@ -2,8 +2,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target
-allure-report/*.json
-.src/main/resources/log4j2.xml
+
+**.allure-report/*.json
+**.logs/*.log
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
