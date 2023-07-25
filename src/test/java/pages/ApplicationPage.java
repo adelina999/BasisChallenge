@@ -49,18 +49,20 @@ public class ApplicationPage extends BasePage {
         String localpdfFile = null;
         //String pdfFilePath = "C:/Users/adelk/OneDrive/Desktop/resume/Adele Nosonovich_Test.pdf";
         if (format == "PDF" && scenario == "POSITIVE") {
-            localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Adele Nosonovich_Test.pdf";
+            localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Test_resume.pdf";
         } else if (format == "WORD" && scenario == "POSITIVE") {
-            localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Adele Nosonovich_Test.docx";
+            localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/Test_resume.docx";
         } else if (format == "PDF" && scenario == "NEGATIVE") {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/basis_automation_assignment.pdf";
         } else if (format == "WORD" && scenario == "NEGATIVE") {
             localpdfFile = "C:/work/BasisChallenge/src/test/java/fileUPload/basis_automation_assignment.pdf";
         }
 
-        WebElement fileinput = driver.findElement(By.cssSelector("#resume-upload-input"));
+        //WebElement fileinput = driver.findElement(By.cssSelector("#resume-upload-input"));
+        WebElement fileinput = driver.findElement(By.xpath("//input[@id='resume-upload-input']"));
         fileinput.sendKeys(localpdfFile);
-        //attachResumeBttn.click();
+
+
         try {
             Thread.sleep(5000); // Wait for 5 seconds (adjust as needed)
         } catch (InterruptedException e) {
@@ -93,12 +95,15 @@ public class ApplicationPage extends BasePage {
     public ApplicationPage verifyinputfield() {
         //After successfully attaching resume I perform validations that the input field were auto populated with the expected information from the file
         //The validation can be done against data set as well, here I choose fixed, hard coded values
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement nameInput = driver.findElement(By.xpath("//input[@name='name']"));
-        //  String nameText= nameInput.getAttribute("value");
         WebElement emailInput = driver.findElement(By.cssSelector("input[name='email']"));
         WebElement phoneInput = driver.findElement(By.cssSelector("input[name='phone']"));
         WebElement currentCompanyInput = driver.findElement(By.xpath("//input[@name='org']"));
+        By nameLocator = By.xpath("//input[@name='name']");
+        wait.until(ExpectedConditions.attributeContains(nameLocator, "value", "Adele Nosonovich"));
+
+
         Assert.assertEquals(nameInput.getAttribute("value"), "Adele Nosonovich");
         Assert.assertEquals(emailInput.getAttribute("value"), "fake81@gmail.com");
         Assert.assertEquals(phoneInput.getAttribute("value"), "+14444444444");
@@ -107,11 +112,15 @@ public class ApplicationPage extends BasePage {
         return this;
     }
 
+
     public ApplicationPage testSinglePronounsCheckAndUncheck(String pronoun) {
         setupElementMap();
         WebElement checkPronounBox = elementMap.get(pronoun);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(checkPronounBox));
         checkPronounBox.click();
         System.out.println(pronoun + " checked");
+        wait.until(ExpectedConditions.elementToBeClickable(checkPronounBox));
         checkPronounBox.click();
         System.out.println(pronoun + " unchecked");
         return this;

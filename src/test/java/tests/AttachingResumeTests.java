@@ -16,7 +16,7 @@ public class AttachingResumeTests extends BaseTest {
         try {
             init("chrome", "30");
             logger.info("Browser opened");
-            BasePage basePage = new BasePage(driver);
+           // BasePage basePage = new BasePage(driver);
         } catch (Exception e) {
             // Handle initialization errors here
             e.printStackTrace();
