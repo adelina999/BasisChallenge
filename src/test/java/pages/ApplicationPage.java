@@ -10,6 +10,7 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ApplicationPage extends BasePage {
     public ApplicationPage(WebDriver driver) {
@@ -106,7 +107,7 @@ public class ApplicationPage extends BasePage {
         return this;
     }
 
-    public ApplicationPage testSinglePronouns(String pronoun) {
+    public ApplicationPage testSinglePronounsCheckAndUncheck(String pronoun) {
         setupElementMap();
         WebElement checkPronounBox = elementMap.get(pronoun);
         checkPronounBox.click();
@@ -118,10 +119,61 @@ public class ApplicationPage extends BasePage {
     }
 
     public ApplicationPage testMultiplePronouns(List<String> pronounList) {
+        setupElementMap();
+       for(int i=0;i< pronounList.size();i++){
+           WebElement checkPronounBox = elementMap.get(pronounList.get(i));
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+           wait.until(ExpectedConditions.elementToBeClickable(checkPronounBox));
+           checkPronounBox.click();
 
+           System.out.println(pronounList.get(i) + " checked");
+
+       }
         return this;
 
     }
+
+    public ApplicationPage testSinglePronounsCheck(String pronoun) {
+        setupElementMap();
+        WebElement checkPronounBox = elementMap.get(pronoun);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(checkPronounBox));
+       // WebElement overlayElement = driver.findElement(By.cssSelector("div.main-header-content"));
+        //wait.until(ExpectedConditions.invisibilityOf(overlayElement));
+        checkPronounBox.click();
+        System.out.println(pronoun + " checked");
+        return this;
+
+    }
+
+    public Boolean validatePronounsFieldsselected(String pronoun) {
+
+        setupElementMap();
+        WebElement checkPronounBox=elementMap.get(pronoun);
+        Boolean isCheckboxAvailable= checkPronounBox.isSelected() ;
+
+//    for(Map.Entry<String, WebElement> entry: elementMap.entrySet()){
+//        Boolean isCheckboxAvailable= !(entry.getValue()).isEnabled();
+//        if(entry.getKey()!="UseNameOnly" || entry.getKey()!="Custom"){
+//            Assert.assertTrue(isCheckboxAvailable);
+//            System.out.println(entry.getKey() + "is not clickable");
+//        }
+//        else{
+//            Assert.assertFalse(isCheckboxAvailable);
+//            System.out.println(entry.getKey() + "is  clickable");
+//        }
+        return isCheckboxAvailable;
+    }
+
+    public ApplicationPage validateCustomInputField() throws Exception {
+       WebElement custominputField= driver.findElement(By.xpath("//input[@id='customPronounsTextField']"));
+       custominputField.sendKeys("Custom");
+       custominputField.clear();
+        return this;
+
+    }
+
+
 
 
 }
